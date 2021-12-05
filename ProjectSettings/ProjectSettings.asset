@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: Lea Helbok
   productName: Recap-LH03
   defaultCursor: {fileID: 2800000, guid: d03e89901eab70a4ab1d4450b92898fe, type: 3}
   cursorHotspot: {x: 0, y: 0}
@@ -269,7 +269,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: bd7690849343bc74cb184f3df07f90a4, type: 3}
+      m_Icon: {fileID: 2800000, guid: 0fcb852986b8ba54eafd2679f5b97cdb, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
