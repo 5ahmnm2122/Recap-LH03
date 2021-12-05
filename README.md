@@ -15,6 +15,8 @@ Shoot the targets with your mouse until you reach a score of 10.
 ### Target platform: 
 WebGL 960x600
 
+Link: https://5ahmnm2122.github.io/Recap-LH03/
+
 
 ### Visuals: 
 /
