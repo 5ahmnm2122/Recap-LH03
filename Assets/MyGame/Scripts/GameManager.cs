@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public Text countText;
     public GameObject originalTarget;
     private GameObject target;
-
     private float canvasWidth;
     private float canvasHeight;
     private float canvasX;
@@ -22,20 +21,21 @@ public class GameManager : MonoBehaviour
     public GameObject confettiBurst;
     public Text timeScore;
     private bool timerActive = true;
+    private int maxScore = 10;
 
     private void Update()
     {
-        //Counts the stars that are being shot
+        //Displays the score
         countText.text = counter.ToString();
         //Counts the spawn time
         spawnTimer += Time.deltaTime;
 
-        // Counts the score time
         if (timerActive)
         {
+            // Counts the score time
             scoreTimer += Time.deltaTime;      
         }
-        //Rounds the seconds um to two decimals after the comma
+        //Rounds the seconds to two decimals after the comma
         scoreTimer = Mathf.Round(scoreTimer * 100f) / 100f;
         //Displays the time score
         timeScore.text = "Score: " +  scoreTimer.ToString() + " s";
@@ -46,15 +46,15 @@ public class GameManager : MonoBehaviour
             ShowTarget();
         }
 
-        //When the counter equals 10 the game is stopped
-        if (counter >= 10)
+        //When the counter reaches the max Score the game is stopped
+        if (counter >= maxScore)
         {
-            // The win text appears
+            //Displays the win text
             winText.SetActive(true);
             //The score timer is stopped
             timerActive = false;
 
-            // The confetti appears for 6.4 seconds
+            //The confetti appears for a certain amount of time
             if (spawnTimer < 6.5)
             {
                 confettiBurst.SetActive(true);
@@ -75,27 +75,27 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //The canvas rect transfrom is saved here
-        RectTransform cansvasTransform = canvas.GetComponent<RectTransform>();
+        RectTransform canvasTransform = canvas.GetComponent<RectTransform>();
 
-        //The canvas width, height, x and y are getting saved into variables
-        canvasWidth = cansvasTransform.rect.width;
-        canvasHeight = cansvasTransform.rect.height;
-        canvasX = cansvasTransform.rect.x;
-        canvasY = cansvasTransform.rect.y;
+        //The canvas width, height, x and y are saved into variables
+        canvasWidth = canvasTransform.rect.width;
+        canvasHeight = canvasTransform.rect.height;
+        canvasX = canvasTransform.rect.x;
+        canvasY = canvasTransform.rect.y;
 
-        //the original prefab target is deactivated
+        //The original prefab target is deactivated
         originalTarget.SetActive(false);
-        //First star target is being shown
+        //First star target is shown
         ShowTarget();
     }
 
     //Method that makes the target appear
     public void ShowTarget()
     {
-        //If the target counter is under 10 and the game is not won a new target is shown
-        if (counter < 10)
+        //If the target counter is under max score, the game is not won, a new target is shown
+        if (counter < maxScore)
         {
-            //If the old target isn't destroyed by the mouse click it gets destroyed
+            //If the old target isn't destroyed by the mouse it gets destroyed
             Destroy(target);
             //Calculation of the position of the new target
             var xPos = Random.Range(margin, canvasWidth - margin);
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
             GameObject newTarget = Instantiate(originalTarget, canvas.transform);
             newTarget.GetComponent<Transform>().localPosition = new Vector2(xPos, yPos);
 
-            //The new is not set and activated to be seen, the timer is reset to 0 for the enxt cycle
+            //The new target has to be activated, the timer is reset to 0 for the next cycle
             target = newTarget;
             target.SetActive(true);
             spawnTimer = 0;
