@@ -2,9 +2,7 @@
 
 ### Project description: 
 
-Recap project: Shoot the star targets with mouse until you reach 
-
-Shoot the targets with your mouse until you reach a score of 10.
+A game where you shoot at targets till a you've reached a certain amount of points.
 
 ### Development platform: 
 
